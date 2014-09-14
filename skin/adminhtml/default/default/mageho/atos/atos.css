@@ -1,0 +1,63 @@
+/*
+ * Mageho
+ * Ilan PARMENTIER
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to contact@mageho.com so we can send you a copy immediately.
+ *
+ * @category     Mageho
+ * @package     Mageho_Atos
+ * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
+ * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @version      Release: 1.0.8.2
+ * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+#atos-logo { background:url(images/atos_section.png) no-repeat 0 0; padding-left:56px; float:left; }
+
+.entry-edit { position:relative; }
+	/* ! Lien 'en savoir plus' */
+	.more { position:absolute; top:2px; right:8px; }
+		.more a { color:#FFF; text-decoration:underline; font-weight:700; }
+
+.atowpseveral { width:100%; }
+	.payment-means { text-align:center; vertical-align:middle; }
+	.payment-infos { width:35%; }
+	.payment-due-dates { width:35%; }
+	
+.atowps { width:100%; }
+	.atowps .payment-means { text-align:center; vertical-align:middle; }
+	.atowps .payment-infos { width:80%; }
+
+/*
+ *
+ * ! Page administration configurationn du module 
+ *
+ *
+ */
+h3.atos-header { background:url(images/atos_section.png) no-repeat 0 0; height:0; overflow:hidden; padding:14px 0 0; width:56px; }
+
+ul.tabs a.atos-section,
+ul.tabs a.atos-section:hover { background:url(../../images/tabs_span_bg.gif) repeat-x 0 100%; border-bottom:none; padding:0.5em 0.5em 0.28em 1.5em; }
+ul.tabs a.atos-section:hover { background-color:#d8e6e6; }
+ul.tabs a.atos-section.active, ul.tabs a.atos-section.active:hover { background-color:#fff; }
+ul.tabs a.atos-section span,
+ul.tabs a.atos-section:hover span { background:url(images/atos_section.png) no-repeat 0 0; height:0; overflow:hidden; padding:14px 0 3px; width:45px; }
+
+.atos-selection { border-collapse:collapse; width:100%; margin:20px 0; }
+.atos-selection .atos-selection-info { text-align:right; }
+.atos-selection th { font-size:13px; padding:5px 0; text-align:left; vertical-align:middle; }
+.atos-selection td { background:#f2f2f2; border-bottom:5px solid #fff; padding:5px; vertical-align:top; }
+.atos-selection-simplified { background:#fff; padding-left:35px; }
+.atos-selection td a { color:#2997d8; }
+.atos-selection td strong { color:#3c616a; }
+.atos-selection td label { display:block; padding-left:30px; text-indent:-30px; }
+.atos-selection td div label { display:inline; padding:0; text-indent:0; }
+.atos-selection td input { height:13px; overflow:hidden; margin-right:15px; position:relative; top:-1px; width:13px; vertical-align:middle; }
+
+.atos-config .form-list { width:100%; }
+.atos-config tr.hover { background:#f7f7f7; }
+.atos-config tr.hover label { cursor:help; }

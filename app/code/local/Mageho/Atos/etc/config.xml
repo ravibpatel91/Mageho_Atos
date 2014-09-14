@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Mageho
+ * Ilan PARMENTIER
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to contact@mageho.com so we can send you a copy immediately.
+ *
+ * @category     Mageho
+ * @package     Mageho_Atos
+ * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
+ * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @version      Release: 1.0.8.2
+ * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Mageho_Atos>
+            <version>1.0.8.0</version>
+        </Mageho_Atos>
+    </modules>
+    <global>
+        <blocks>
+            <atos>
+            	<class>Mageho_Atos_Block</class>
+            </atos>
+        </blocks>
+        <helpers>
+            <atos>
+            	<class>Mageho_Atos_Helper</class>
+            </atos>
+        </helpers>
+        <models>
+            <atos>
+                <class>Mageho_Atos_Model</class>
+            </atos>
+        </models>
+        <events>
+            <admin_system_config_changed_section_atos>
+                <observers>
+                    <atos_rules_condtion>
+                        <class>atos/observer</class>
+                        <method>adminSystemConfigSavedAtosSection</method>
+                    </atos_rules_condtion>
+                </observers>
+            </admin_system_config_changed_section_atos>
+        </events>
+        <payment>
+        	<atos>
+        		<merchant_country>
+                    <be>
+                        <code>be</code>
+                        <name><![CDATA[Belgique]]></name>
+                    </be>
+                    <fr>
+                        <code>fr</code>
+                        <name><![CDATA[France]]></name>
+                    </fr>
+                    <de>
+                        <code>de</code>
+                        <name><![CDATA[Allemagne]]></name>
+                    </de>
+                    <it>
+                        <code>it</code>
+                        <name><![CDATA[Italie]]></name>
+                    </it>
+                    <es>
+                        <code>es</code>
+                        <name><![CDATA[Espagne]]></name>
+                    </es>
+                    <en>
+                        <code>en</code>
+                        <name><![CDATA[Royaume-Uni]]></name>
+                    </en>
+                </merchant_country>
+				<currencies>
+					<EUR>
+						<code>978</code>
+						<iso>EUR</iso>
+						<name><![CDATA[Euro]]></name>
+					</EUR>
+					<USD>
+						 <code>840</code>
+						 <iso>USD</iso>
+						 <name><![CDATA[Dollar US]]></name>
+					</USD>
+					<CHF>
+						 <code>756</code>
+						 <iso>CHF</iso>
+						 <name><![CDATA[Franc Suisse]]></name>
+					</CHF>
+					<GBP>
+						<code>826</code>
+						<iso>GBP</iso>
+						<name><![CDATA[Livre Sterling]]></name>
+					</GBP>
+					<CAD>
+						<code>124</code>
+						<iso>CAD</iso>
+						<name><![CDATA[Dollar Canadien]]></name>
+					</CAD>
+					<JPY>
+						<code>392</code>
+						<iso>JPY</iso>
+						<name><![CDATA[Yen japonais]]></name>
+					</JPY>
+					<MXP>
+						<code>484</code>
+						<iso>MXP</iso>
+						<name><![CDATA[Peso mexicain]]></name>
+					</MXP>
+					<TRL>
+						<code>792</code>
+						<iso>TRL</iso>
+						<name><![CDATA[Ancienne lire turque]]></name>
+					</TRL>
+					<AUD>
+						<code>036</code>
+						<iso>AUD</iso>
+						<name><![CDATA[Dollar australien]]></name>
+					</AUD>
+					<NZD>
+						<code>554</code>
+						<iso>NZD</iso>
+						<name><![CDATA[Dollarnéo-zélandais]]></name>
+					</NZD>
+					<NOK>
+						<code>578</code>
+						<iso>NOK</iso>
+						<name><![CDATA[Couronne norvégienne]]></name>
+					</NOK>
+					<BRC>
+						<code>986</code>
+						<iso>BRC</iso>
+						<name><![CDATA[Cruzeiro Brésilien]]></name>
+					</BRC>
+					<ARP>
+						<code>032</code>
+						<iso>ARP</iso>
+						<name><![CDATA[Peso argentin]]></name>
+					</ARP>
+					<KHR>
+						<code>116</code>
+						<iso>KHR</iso>
+						<name><![CDATA[Riel Cambodge]]></name>
+					</KHR>
+					<TWD>
+						<code>901</code>
+						<iso>TWD</iso>
+						<name><![CDATA[Dollarde Taiwan]]></name>
+					</TWD>
+					<DKK>
+						<code>208</code>
+						<iso>DKW</iso>
+						<name><![CDATA[Couronne Danoise]]></name>
+					</DKK>
+					<SEK>
+						<code>752</code>
+						<iso>SEK</iso>
+						<name><![CDATA[Couronne Suédoise]]></name>
+					</SEK>
+					<KRW>
+						<code>410</code>
+						<iso>KRW</iso>
+						<name><![CDATA[Wonsud-coréen]]></name>
+					</KRW>
+					<SGD>
+						<code>702</code>
+						<iso>SGD</iso>
+						<name><![CDATA[Dollarde Singapour]]></name>
+					</SGD>
+				</currencies>
+				<datafield>
+					<CARD_NO_LOGO>
+						<code>CARD_NO_LOGO</code>
+						<name>CARD_NO_LOGO</name>
+					</CARD_NO_LOGO>
+					<NO_COPYRIGHT>
+						<code>NO_COPYRIGHT</code>
+						<name>NO_COPYRIGHT</name>
+					</NO_COPYRIGHT>
+					<NO_DISPLAY_CARD>
+						<code>NO_DISPLAY_CARD</code>
+						<name>NO_DISPLAY_CARD</name>
+					</NO_DISPLAY_CARD>
+					<NO_DISPLAY_CANCEL>
+						<code>NO_DISPLAY_CANCEL</code>
+						<name>NO_DISPLAY_CANCEL</name>
+					</NO_DISPLAY_CANCEL>
+					<NO_SSL_SYMBOLS>
+						<code>NO_SSL_SYMBOLS</code>
+						<name>NO_SSL_SYMBOLS</name>
+					</NO_SSL_SYMBOLS>
+					<NO_WINDOWS_MSG>
+						<code>NO_WINDOWS_MSG</code>
+						<name>NO_WINDOWS_MSG</name>
+					</NO_WINDOWS_MSG>
+					<NO_DISPLAY_URL>
+						<code>NO_DISPLAY_URL</code>
+						<name>NO_DISPLAY_URL</name>
+					</NO_DISPLAY_URL>
+					<NO_RESPONSE_PAGE>
+						<code>NO_RESPONSE_PAGE</code>
+						<name>NO_RESPONSE_PAGE</name>
+					</NO_RESPONSE_PAGE>
+				</datafield>
+				<languages>
+					<fr>
+					   <code>fr</code>
+					   <name><![CDATA[Français]]></name>
+					</fr>
+					<en>
+					   <code>en</code>
+					   <name><![CDATA[Anglais]]></name>
+					</en>
+					<sp>
+					   <code>sp</code>
+					   <name><![CDATA[Espagnol]]></name>
+					</sp>
+					<ge>
+					   <code>ge</code>
+					   <name><![CDATA[Allemand]]></name>
+					</ge>
+					<it>
+					   <code>it</code>
+					   <name><![CDATA[Italien]]></name>
+					</it>
+				</languages>
+				<payment_means>
+					<CB>
+					   <code>CB</code>
+					   <name><![CDATA[Carte Bleue]]></name>
+					</CB>
+					<MASTERCARD>
+						<code>MASTERCARD</code>
+						<name><![CDATA[MasterCard]]></name>
+					</MASTERCARD>
+					<VISA>
+						<code>VISA</code>
+						<name><![CDATA[Visa]]></name>
+					</VISA>
+					<AURORE>
+						<code>AURORE</code>
+						<name><![CDATA[Aurore]]></name>
+					</AURORE>
+					<AMEX>
+						<code>AMEX</code>
+						<name><![CDATA[American Express]]></name>
+					</AMEX>
+					<DINERS>
+						<code>DINERS</code>
+						<name><![CDATA[Diner's club]]></name>
+					</DINERS>
+					<JCB>
+						<code>JCB</code>
+						<name><![CDATA[Japanese Credit Bureau]]></name>
+					</JCB>
+					<COFINOGA>
+						<code>COFINOGA</code>
+						<name><![CDATA[Cofinoga]]></name>
+					</COFINOGA>
+					<FINAREF>
+						<code>FINAREF</code>
+						<name><![CDATA[Finaref]]></name>
+					</FINAREF>
+					<PAYLIB>
+						<code>PAYLIB</code>
+						<name><![CDATA[Paylib]]></name>
+					</PAYLIB>
+				</payment_means>
+        	</atos>
+        </payment>
+    </global>
+    <adminhtml>
+	    <acl>
+	        <resources>
+	            <all>
+	                <title><![CDATA[Allow Everything]]></title>
+	            </all>
+	            <admin>
+	                <children>
+	                    <system>
+	                        <children>
+	                            <config>
+	                                <children>
+	                                	<atos translate="title" module="atos">
+	                                		<title><![CDATA[Atos Payment Service Configuration]]></title>
+	                                	</atos>
+	                                </children>
+	                            </config>
+	                        </children>
+	                    </system>
+	                </children>
+	            </admin>
+	        </resources>
+	    </acl>
+        <translate>
+            <modules>
+                <Mageho_Atos>
+                    <files>
+                        <default>Mageho_Atos.csv</default>
+                    </files>
+                </Mageho_Atos>
+            </modules>
+        </translate>
+		<layout>
+			<updates>
+				<atos>
+					<file>mageho/atos.xml</file>
+				</atos>
+			</updates>
+		</layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Mageho_Atos after="Mage_Adminhtml">Mageho_Atos_Adminhtml</Mageho_Atos>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <secure_url>
+            <atos_standard>/atos/standard</atos_standard>
+			<atos_several>/atos/several</atos_several>
+            <atos_automatic>/atos/automatic</atos_automatic>
+        </secure_url>
+        <routers>
+            <atos>
+                <use>standard</use>
+                <args>
+                    <module>Mageho_Atos</module>
+                    <frontName>atos</frontName>
+                </args>
+            </atos>
+        </routers>
+        <translate>
+            <modules>
+                <Mageho_Atos>
+                    <files>
+                        <default>Mageho_Atos.csv</default>
+                    </files>
+                </Mageho_Atos>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <atos>
+                    <file>mageho/atos.xml</file>
+                </atos>
+            </updates>
+        </layout>
+        <routers>
+			<atos>
+				<use>standard</use>
+				<args>
+					<module>Mageho_Atos</module>
+					<frontName>atos</frontName>
+				</args>
+			</atos>
+        </routers>
+    </frontend>
+    <default>
+	    <atos>
+			<atoswps translate="title" module="atos">
+                <title><![CDATA[Atos Website Standard Payment]]></title>
+			</atoswps>
+			<atoswpseveral translate="title" module="atos">
+				<title><![CDATA[Atos Website Payment Several Times]]></title>
+			</atoswpseveral>
+        </atos>
+        <payment>
+            <atoswps>
+                <model>atos/method_standard</model>
+            </atoswps>
+            <atoswpseveral>
+                <model>atos/method_several</model>
+            </atoswpseveral>
+		</payment>
+    </default>
+</config>

@@ -1,0 +1,20 @@
+<script type="text/javascript">
+/* <![CDATA[ */
+    function generateAtosFiles() 
+    {
+        new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+            method: 'get',
+		    requestHeaders: {Accept: 'application/json'},
+            onSuccess: function(transport) {
+            	var json = transport.responseText.evalJSON(true);
+		        $('atos_button_container').update(json.message);
+            }
+        });
+        return false;
+    }
+/* ]]> */
+</script>
+
+<div id="atos_button_container">
+	<?php echo $this->getButtonHtml() ?>
+</div>

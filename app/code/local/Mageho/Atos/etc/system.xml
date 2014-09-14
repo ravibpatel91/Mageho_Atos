@@ -1,0 +1,565 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Mageho
+ * Ilan PARMENTIER
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to contact@mageho.com so we can send you a copy immediately.
+ *
+ * @category     Mageho
+ * @package     Mageho_Atos
+ * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
+ * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @version      Release: 1.0.8.2
+ * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<sections>
+		<atos translate="label" module="atos">
+            <label>Atos</label>
+            <class>atos-section</class>
+            <header_css>atos-header</header_css>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>400</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <configuration translate="label">
+                    <label>Merchant Account</label>
+                    <fieldset_css>atos-config</fieldset_css>
+                    <expanded>1</expanded>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+                    <fields>
+						<merchant_id translate="label">
+                            <label>Merchant ID</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>atos/system_config_source_merchantid</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</merchant_id>
+                    </fields>
+                </configuration>
+				<demohint translate="label">
+                    <label>Demo Hint</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>atos/adminhtml_system_config_fieldset_demohint</frontend_model>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </demohint>
+				<integration translate="label">
+                    <label>Integration</label>
+                    <fieldset_css>atos-config</fieldset_css>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <path translate="label">
+                    		<frontend_model>atos/adminhtml_system_config_field_path</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </path>
+						<bin_request translate="label comment">
+                            <label>Bin file to build request</label>
+							<comment><![CDATA[Complete path to binary file]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</bin_request>
+						<bin_response translate="label comment">
+                            <label>Bin file to build response</label>
+							<comment><![CDATA[Complete path to binary file]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</bin_response>
+						<generate translate="label comment">
+			                <label><![CDATA[Generate Pathfile & Parcom Files]]></label>
+			                <frontend_type>button</frontend_type>
+                            <frontend_model>atos/adminhtml_system_config_field_generate</frontend_model>
+							<comment><![CDATA[This button will allow you to create on the fly pathfile files & Parcom. Warning: remember to check the ownership and permissions on new files generated.]]></comment>
+			                <sort_order>30</sort_order>
+			                <show_in_default>1</show_in_default>
+			                <show_in_website>0</show_in_website>
+			                <show_in_store>0</show_in_store>
+			            </generate>
+						<pathfile translate="label comment">
+                            <label>Custom Pathfile</label>
+							<comment><![CDATA[Click on the button above to generate pathfile & parcom files automatically. Alternatively, you can enter the file path in this field.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pathfile>
+                        <templatefile translate="label comment">
+                            <label>Template File</label>
+                            <comment><![CDATA[See PAGES CUSTOMIZATION GUIDE]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </templatefile>
+                        <datafield translate="label comment tooltip">
+                            <label>Data Field</label>
+                            <comment><![CDATA[See PAGES CUSTOMIZATION GUIDE]]></comment>
+							<tooltip><![CDATA[Notice : NO_RESPONSE_PAGE's parameter disable these fields from response : caddie, merchant_language, customer_id, customer_email and customer_ip_address]]></tooltip>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>atos/system_config_source_datafield</source_model>
+							<can_be_empty>1</can_be_empty>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </datafield>
+                    </fields>
+				</integration>
+				<securecode translate="label">
+					<label>SecureCode (3D-Secure) Configuration</label>
+                    <frontend_model>atos/adminhtml_system_config_fieldset_securecode</frontend_model>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<bypass_enabled translate="label comment">
+                    		<label>SecureCode Bypass Enabled</label>
+                    		<comment><![CDATA[Disable SecureCode - You can specify special conditions with the configurator below]]></comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                    	</bypass_enabled>
+                    	<conditions translate="label">
+                    		<label>Conditions to disable SecureCode (leave blank to disable for all transactions)</label>
+                    		<frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</conditions>
+                    </fields>
+                </securecode>
+                <images translate="label">
+                    <label>Credit Card Images</label>
+                    <clone_fields>1</clone_fields>
+                    <clone_model>atos/system_config_clone_media_image</clone_model>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <icon>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">atos</upload_dir>
+                            <base_url type="media" scope_info="1">atos</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icon>
+                    </fields>
+                </images>
+				<security_enhancement translate="label">
+                    <label>Security Enhancement</label>
+                    <fieldset_css>atos-config</fieldset_css>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+						<log_ip_address translate="label">
+							<label>Log all Atos IP Adresses from automatic response</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</log_ip_address>
+						<check_ip_address translate="label">
+                            <label>Check Atos IP Address</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</check_ip_address>
+						<allowed_ip translate="label">
+                            <label>Allowed IP to authorize the transaction</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>atos/adminhtml_system_config_field_ip</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowed_ip>
+                    </fields>
+				</security_enhancement>
+				<global translate="label">
+                    <label>Select your payment method you want to accept</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>atos/adminhtml_system_config_fieldset_global</frontend_model>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <atoswps translate="label comment">
+                            <label>Atos Website Payment Standard</label>
+                            <comment><![CDATA[Payment Method Standard to accept credit card payment. To active it, you must contact and have a contract with your bank.]]></comment>
+                            <config_path>payment/atoswps/active</config_path>
+                            <frontend_type>checkbox</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </atoswps>
+						<atoswpseveral>
+                            <label>Atos Website Payment Several</label>
+                            <comment><![CDATA[Payment Method to accept payment several times. You must be very watchful : check expiration date of credit card, location and customer's info.]]></comment>
+                            <config_path>payment/atoswpseveral/active</config_path>
+                            <frontend_type>checkbox</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</atoswpseveral>
+                    </fields>
+                </global>
+                <atoswps translate="label comment">
+                    <label>Atos Website Payment Standard</label>
+                    <fieldset_css>atos-config</fieldset_css>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </order_status>
+                        <invoice_create translate="label">
+                            <label>Create invoice when payment accepted</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </invoice_create>
+                        <payment_means translate="label">
+                            <label>Payment Means</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>atos/system_config_source_paymentmeans</source_model>
+							<sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </payment_means>
+                        <order_status_payment_accepted translate="label">
+                            <label>Order status when payment accepted by Atos</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status_accepted</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_accepted>
+		        		<order_status_payment_refused translate="label">
+                            <label>Order status when payment refused by Atos</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>atos/system_config_source_order_status_refused</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_refused>
+                        <order_status_payment_canceled translate="label">
+                            <label>Order status when payment canceled by customer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status_canceled</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_canceled>
+						<capture_mode translate="label">
+                            <label>Capture Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_capturemode</source_model>
+							<sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</capture_mode>
+						<capture_day translate="label comment">
+                            <label>Capture Day</label>
+							<comment><![CDATA[Between 0 and 99 - Notice : Be careful, when you exceed 7 days, the transaction account for two]]></comment>
+                            <frontend_type>text</frontend_type>
+							<depends><capture_mode>AUTHOR_CAPTURE</capture_mode></depends>
+							<sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</capture_day>
+						<cms_block translate="label">
+							<label>Display a CMS block inside the payment form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_cms_block</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cms_block>
+                        <icon translate="label comment">
+                        	<label>Payment Method Icon</label>
+                        	<comment><![CDATA[Icon is displayed in the selection of payment methods for clarity.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">atos</upload_dir>
+                            <base_url type="media" scope_info="1">atos</base_url>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icon>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>140</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <depends><allowspecific>1</allowspecific></depends>
+                            <sort_order>150</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <min_order_total translate="label">
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_order_total>
+                        <max_order_total translate="label">
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_order_total>
+                    </fields>
+                </atoswps>
+                <atoswpseveral translate="label">
+                    <label>Atos Website Payment Several</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <invoice_create translate="label">
+                            <label>Create invoice when payment accepted</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </invoice_create>
+                        <payment_means translate="label comment">
+                            <label>Payment Means</label>
+							<comment><![CDATA[Only available for these credit card : CB, VISA and MASTERCARD]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>atos/system_config_source_paymentmeansforseveralpayment</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </payment_means>
+                        <order_status_payment_accepted translate="label">
+                            <label>Order status when payment accepted by Atos</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status_accepted</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_accepted>
+		        		<order_status_payment_refused translate="label">
+                            <label>Order status when payment refused by Atos</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>atos/system_config_source_order_status_refused</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_refused>
+                        <order_status_payment_canceled translate="label">
+                            <label>Order status when payment canceled by customer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_order_status_canceled</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+		        		</order_status_payment_canceled>
+                        <nb_payment translate="label">
+                            <label>Number of payment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_numberofpayment</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </nb_payment>
+						<icon translate="label comment">
+                            <label>Icon to display in product info</label>
+							<comment><![CDATA[Visible on product info to show is available]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">atos</upload_dir>
+                            <base_url type="media" scope_info="1">atos</base_url>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icon>
+						<cms_block translate="label">
+							<label>Display a CMS block inside the payment form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>atos/system_config_source_cms_block</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cms_block>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>120</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>130</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <depends><allowspecific>1</allowspecific></depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <min_order_total>
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_order_total>
+                        <max_order_total>
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_order_total>
+					</fields>
+				</atoswpseveral>
+            </groups>
+		</atos>
+    </sections>
+</config>

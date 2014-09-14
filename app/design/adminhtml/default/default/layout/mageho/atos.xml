@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+ * @category   Mageho
+ * @package    Mageho_Atos
+ * @copyright  Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @license    http://www.mageho.com/license  Proprietary License
+ * @version    Release: 1.0.8.2
+ */
+ -->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+            <action method="addCss"><stylesheet>mageho/atos/atos.css</stylesheet></action>
+        </reference>
+    </default>
+</layout>

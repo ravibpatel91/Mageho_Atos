@@ -1,0 +1,32 @@
+<?php
+/*
+ * Mageho
+ * Ilan PARMENTIER
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to contact@mageho.com so we can send you a copy immediately.
+ *
+ * @category     Mageho
+ * @package     Mageho_Atos
+ * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
+ * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @version      Release: 1.0.8.2
+ * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php # Afin de ne pas avoir de probleme avec les options produits (prix geré par javascript), on n'affiche pas le prix de financement ?>
+<?php if (!$_product->isConfigurable() || !$_product->hasOptions()): ?>
+<div class="installments">
+	<span class="or"><?php echo $this->__('Or'); ?></span>
+	<span  id="atos-nb-times-<?php echo $_product->getId(); ?>" class="price-wrapper">
+    	<span id="nb-<?php echo $_product->getId(); ?>" class="nb"><?php echo $this->getNbPayment(); ?></span>
+    	<span id="times-<?php echo $_product->getId(); ?>" class="times">&times;</span>
+    	<span id="atos-price-<?php echo $_product->getId(); ?>" class="price"><?php echo $this->getSeveralPrice(); ?></span>
+    </span>
+</div>
+<?php endif; ?>

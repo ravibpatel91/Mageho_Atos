@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Mageho
+ * Ilan PARMENTIER
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to contact@mageho.com so we can send you a copy immediately.
+ *
+ * @category     Mageho
+ * @package     Mageho_Atos
+ * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
+ * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
+ * @version      Release: 1.0.8.2
+ * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+-->
+<template>
+    <pathfile>
+        <content><![CDATA[
+#########################################################################
+#
+# Pathfile
+#
+# Liste fichiers paramètres utilisés par le module de paiement
+#
+#########################################################################
+# ------------------------------------------------------------------------
+# Chemin vers le répertoire des images
+# ------------------------------------------------------------------------
+#
+D_LOGO!{{mediaAtosPath}}!
+#
+#------------------------------------------------------------------------
+#  Fichiers paramètres liés
+#------------------------------------------------------------------------
+#
+# Certificat du commercant
+#
+F_CERTIFICATE!{{certificateAtosPath}}!
+#
+# Fichier paramètre commercant
+#
+F_PARAM!{{parmcomAtosPath}}!
+#
+# Fichier des paramètres communs
+#
+F_DEFAULT!{{pathfileAtosPath}}!
+#
+# --------------------------------------------------------------------------
+# Fin du ficher
+# --------------------------------------------------------------------------
+]]></content>
+    </pathfile>
+    <parcom>
+    	<content><![CDATA[
+###############################################################################
+#
+# Fichier des paramètres du commercant
+#
+# Remarque : Ce fichier paramètre est sous la responsabilité du commercant
+#
+###############################################################################
+#
+# URL de retour automatique de la reponse du paiement
+AUTO_RESPONSE_URL!{{autoResponseUrl}}!
+#
+# URL de traitement d'un paiement refusé
+CANCEL_URL!{{cancelUrl}}!
+#
+# URL de retour suite à un paiement accepté
+RETURN_URL!{{returnUrl}}!
+#
+# Logo central
+ADVERT!!
+#
+# Nom du fichier en fond d'écran des pages de paiement
+BACKGROUND!!
+#
+# Logo d'annulation (affichage d'un bouton si non renseigné)
+CANCEL_LOGO!!
+#
+# Liste des cartes acceptées par le commercant
+CARD_LIST!{{cardList}}!
+#
+# Code devise (978=EURO)
+CURRENCY!{{currency}}!
+#
+# Code langage de l'acheteur (fr=francais)
+LANGUAGE!{{language}}!
+#
+# Le logo du commercant (s'affiche en haut à gauche de la page de paiement)
+LOGO!!
+#
+# Le logo du commercant (s'affiche en haut à droite de la page de paiement)
+LOGO2!!
+#
+# Code pays du commercant
+MERCHANT_COUNTRY!{{merchantCountry}}!
+#
+# Code langage du commercant
+MERCHANT_LANGUAGE!{{merchantLanguage}}!
+#
+# Liste des moyens de paiement acceptés
+PAYMENT_MEANS!{{paymentMeans}}!
+#
+# Logo de retour a la boutique apres le paiement (bouton si non renseigné)
+RETURN_LOGO!!
+#
+# Logo de validation du paiement (affichage d'un bouton si non renseigné)
+SUBMIT_LOGO!!
+#
+# Fichier template
+TEMPLATE!{{templateFilename}}!
+#
+# END OF FILE
+]]></content>
+    </parcom>
+</template>

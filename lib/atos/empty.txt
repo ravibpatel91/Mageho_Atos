@@ -1,0 +1,2 @@
+Goal : Force Magento Connect to create this folder
+But : Force Magento Connect a créer ce dossier
