@@ -14,31 +14,40 @@
  * @package     Mageho_Atos
  * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
  * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
- * @version      Release: 1.0.8.2
+ * @version      Release: 1.0.8.3
  * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
  */
+ 
+ 	$hash = unserialize($this->getInfo()->getAdditionalData());
+ 	$response = Mage::getSingleton('atos/config')->getApiResponse()->decodeResponse($hash);
+ 	$hlpr = Mage::helper('atos'); 
 ?>
-<?php $hash = unserialize($this->getInfo()->getAdditionalData()); ?>
-<?php $hlpr = Mage::helper('atos'); ?>
 
 <div id="atos-logo">&nbsp;</div>
 
 <p><strong><?php echo $this->getMethod()->getTitle(); ?></strong></p>
 
-<?php if (isset($hash) && !empty($hash)): ?>
 <ul class="messages">
-	<?php if ($hash['response_code'] == '00'): ?>
-	<li class="success-msg"><?php echo $hlpr->__('Payment accepted by Atos'); ?></li>
-	<?php else: ?>
-	<li class="warning-msg"><?php echo $hlpr->__('Customer was rejected by Atos'); ?></li>
-	<?php endif; ?>
+	<?php if (isset($hash['response_code'])): ?>
+		<?php if ($hash['response_code'] == '00'): ?>
+	    <li class="success-msg"><?php echo $hlpr->__('Payment accepted by Atos'); ?></li>
+	    <?php else: ?>
+	    <li class="warning-msg"><?php echo $hlpr->__('Customer was rejected by Atos'); ?></li>
+	    <?php endif; ?>
+    <?php else: ?>
+    <li class="warning-msg"><?php echo $hlpr->__('The customer left without paying'); ?></li>
+    <?php endif; ?>
 </ul>
 
 <?php
 /*
+ *
  * Details de la transaction
+ *
+ *
  */
 ?>
+<?php if (isset($response['transaction_id'], $response['response_code'])): ?>
 <?php $return = Mage::getSingleton('atos/api_response')->paymentN($hash); ?>
 <div class="grid">
 	<table class="atowpseveral">
@@ -70,8 +79,53 @@
 	    </tbody>
 	</table>
 </div>
-<?php else: ?>
-<ul class="messages">
-	<li class="warning-msg"><?php echo $hlpr->__('The customer left without paying'); ?></li>
-</ul>
+
+<div class="more"><a href="#response" onclick="Effect.toggle('response', 'blind'); return false;"><?php echo $hlpr->__('More Informations'); ?></a></div>
+
+<div id="response" style="display:none">
+	<table class="form-list">
+		<tbody>
+        	<tr>
+        		<td><?php echo $response['transaction_id']; ?></td>
+        	</tr>
+            <tr>
+            	<td><?php echo $response['amount']; ?></td>
+            </tr>
+            <tr>
+            	<td><?php echo $response['capture_mode']; ?></td>
+            </tr>
+            <tr>
+            	<td><?php echo $response['capture_day']; ?></td>
+            </tr>
+            
+            <?php if (isset($response['card_number'])): ?>
+            <tr>
+            	<td><?php echo $response['card_number']; ?></td>
+            </tr>
+            <?php endif; ?>
+            
+            <tr>
+            	<td><?php echo $response['cvv_response_code']; ?></td>
+            </tr>
+            <tr>
+            	<td><?php echo $response['response_code']; ?></td>
+            </tr>
+            
+            <?php if (! empty($hash['bank_response_code'])): ?>
+            <tr>
+            	<td><?php echo $response['bank_response_code']; ?></td>
+            </tr>
+            <?php endif; ?>
+            
+            <?php if (isset($response['complementary_code'])): ?>
+            <tr>
+            	<td><?php echo $response['complementary_code']; ?></td>
+            </tr>
+            <?php endif; ?>
+            
+		</tbody>
+	</table>
+</div>
 <?php endif; ?>
+
+<div class="divider">&nbsp;</div>

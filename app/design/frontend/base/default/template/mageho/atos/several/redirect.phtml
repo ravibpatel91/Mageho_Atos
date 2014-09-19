@@ -14,16 +14,18 @@
  * @package     Mageho_Atos
  * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
  * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
- * @version      Release: 1.0.8.2
+ * @version      Release: 1.0.8.3
  * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
  */
 ?>
 <p class="a-center"><?php echo Mage::helper('atos')->__('You will be redirected to our bank for payment'); ?></p>
+
 <form id="atos" action="<?php echo $this->getFormUrl(); ?>" method="post">
 	<input type="hidden" name="<?php echo $this->getSelectedMethod(); ?>_x" value="1" />
 	<input type="hidden" name="<?php echo $this->getSelectedMethod(); ?>_y" value="1" />
 	<?php echo $this->getHtml(); ?>
 </form>
+
 <script>
 //<![CDATA[
 	var atos = document.getElementById('atos');

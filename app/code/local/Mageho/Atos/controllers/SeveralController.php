@@ -14,7 +14,7 @@
  * @package     Mageho_Atos
  * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
  * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
- * @version      Release: 1.0.8.2
+ * @version      Release: 1.0.8.3
  * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
  */
 
@@ -105,7 +105,11 @@ class Mageho_Atos_SeveralController extends Mageho_Atos_Controller_Action
 			'request' => $this->getRequest())
 		);
 		
-		$this->_redirect('*/*/failure');
+		if ($this->getConfig()->redirect) {
+			$this->_redirect('*/*/failure', array('_secure' => true));
+		} else {
+			$this->_redirect('checkout/cart', array('_secure' => true));
+		}
 	}
 
     public function normalAction() 
@@ -151,7 +155,11 @@ class Mageho_Atos_SeveralController extends Mageho_Atos_Controller_Action
 			'request' => $this->getRequest())
 		);
 		
-		$this->_redirect('*/*/failure', array('_secure' => true));
+		if ($this->getConfig()->redirect) {
+			$this->_redirect('*/*/failure', array('_secure' => true));
+		} else {
+			$this->_redirect('checkout/cart', array('_secure' => true));
+		}
 	}
 	
 	/*

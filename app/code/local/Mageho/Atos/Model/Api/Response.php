@@ -14,7 +14,7 @@
  * @package     Mageho_Atos
  * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
  * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
- * @version      Release: 1.0.8.2
+ * @version      Release: 1.0.8.3
  * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
  */
 
@@ -185,6 +185,100 @@ class Mageho_Atos_Model_Api_Response extends Mageho_Atos_Model_Config
 		}
 		
 		return $hash;
+	}
+	
+	/*
+	 *
+	 * TO DO : refactory this function (19/09/2014 21:32)
+	 *
+	 */
+	public function decodeResponse($response) 
+	{
+		$hlpr = Mage::helper('atos');
+	
+	    $return = array();
+	    
+		$return['transaction_id'] = $hlpr->__('Transaction Number') . ' : ' . $response['transaction_id'];
+		
+		$return['amount'] = $hlpr->__('Total') . ' : ' . $response['amount'];
+		
+		$return['payment_means'] = $hlpr->__('Type of credit card') . ' : ' . $response['payment_means'];
+		
+		if (isset($response['capture_mode']) && !empty($response['capture_mode'])) {
+			$return['capture_mode'] = $hlpr->__('Capture Mode') . ' : ' . $response['capture_mode'];
+		}
+		
+		if (isset($response['capture_day'])  && !empty($response['capture_day']) && $response['capture_day'] > 0)
+		{
+		    $return['capture_day'] = $hlpr->__('Day before the capture') . ' : ' . $response['capture_day'];
+		} else {
+			$return['capture_day'] = $hlpr->__('Day before capture: immediate capture') ;	
+		}
+		
+        if ($cc = self::getCreditCardNumber($response['card_number'])) 
+        {
+        	$return['card_number'] = $hlpr->__('Credit card number') . ' : ' . $cc;
+        	$return['card_number_raw'] = $cc;
+		}
+		
+		if (isset($response['cvv_response_code'])) 
+		{
+			$return['cvv_response_code'] = $hlpr->__('About CVV credit card') . ' : ' . self::getCvvResponseLabel($response['cvv_response_code']);
+			$return['cvv_response_code_raw'] = self::getCvvResponseLabel($response['cvv_response_code']);
+		}
+		
+		if (isset($response['response_code'])) 
+		{	
+		    $return['response_code'] = $hlpr->__('Response code of the bank') . ' : ' . self::getResponseLabel($response['response_code']);
+			$return['response_code_raw'] = self::getResponseLabel($response['response_code']); 
+		}
+		
+	    if (isset($response['bank_response_code'])) 
+	    {
+			$return['bank_response_code'] = $hlpr->__('Response code of the bank') . ' : ' . self::getBankResponseLabel($response['bank_response_code']);
+			$return['bank_response_code_raw'] = self::getBankResponseLabel($response['bank_response_code']);
+		}
+
+		if (isset($response['complementary_code']) 
+			&& ($complementary_code = self::getComplementaryCode($response['complementary_code']))) 
+		{
+			$return['complementary_code'] = $hlpr->__('Additional control') . ' : ' . $complementary_code;
+			$return['complementary_code_raw'] = $complementary_code;
+		}
+		
+		if (isset($response['data']))
+		{
+			$return['data'] = $response['data'];
+			
+			if ($response['capture_mode'] == 'PAYMENT_N')
+			{
+				foreach(explode(';', $response['data']) as $value)
+				{
+					$data = explode('=', $value);
+					switch ($data[0])
+					{
+						case 'NB_PAYMENT':
+							$return['nb_payment'] = $hlpr->__('Number of monthly') . ' : ' . $data[1];
+							$return['nb_payment_raw'] = $data[1];
+						break;
+						case 'PERIOD':
+							$return['period'] = $hlpr->__('Debit every %d days', $data[1]);
+							$return['period_raw'] = $data[1];
+						break;
+						case 'INITIAL_AMOUNT':
+							$return['initial_amount'] = $hlpr->__('First debit') . ' : ' . $data[1];
+							$return['initial_amount_raw'] = $data[1];
+						break;
+						case 'PAYMENT_DUE_DATES':
+						    $date = explode(',', $data[1]);
+							$return['payment_due_dates'] = array($this->formatDate($date[0]), $this->formatDate($date[1]), $this->formatDate($date[2]));
+						break;
+					}
+				}
+			}
+		}
+		
+		return $return;
 	}
 	
 	/**

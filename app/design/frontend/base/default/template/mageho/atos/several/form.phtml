@@ -14,12 +14,13 @@
  * @package     Mageho_Atos
  * @author       Mageho, Ilan PARMENTIER <contact@mageho.com>
  * @copyright   Copyright (c) 2014  Mageho (http://www.mageho.com)
- * @version      Release: 1.0.8.2
+ * @version      Release: 1.0.8.3
  * @license      http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
  */
+ 
+ 	$_code = $this->getMethodCode();
+ 	$_paymentMeans = $this->getPaymentMeans(); 
 ?>
-<?php $_code = $this->getMethodCode(); ?>
-<?php $_paymentMeans = $this->getPaymentMeans(); ?>
 <?php if ($_paymentMeans): ?>
 <fieldset id="payment_form_<?php echo $_code; ?>" class="form-list" style="display:none">
     <div class="atos-select-cards">
